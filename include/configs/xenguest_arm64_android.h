@@ -10,8 +10,9 @@
 
 #undef CONFIG_EXTRA_ENV_SETTINGS
 #define CONFIG_EXTRA_ENV_SETTINGS	\
-	"loadimage=ext4load pvblock 0 0x90000000 /boot/Image;\0" \
+	"bootcmd=run pvblockboot;\0" \
+	"loadimage=ext4load pvblock 0:7 0x90000000 /Image;\0" \
 	"pvblockboot=run loadimage;" \
-		"booti 0x90000000 - 0x88000000;\0"
+		"booti 0x90000000 - 0x48000000;\0"
 
 #endif /* __XENGUEST_ARM64_H */
